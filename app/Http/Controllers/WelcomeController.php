@@ -1,5 +1,7 @@
 <?php
 
+// Controller //
+// Membuat Controller //
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,3 +14,6 @@ class WelcomeController extends Controller
 }
 
 Route::get('/hello', [WelcomeController::class,'hello']);
+
+
+
