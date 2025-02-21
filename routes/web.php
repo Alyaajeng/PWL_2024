@@ -82,3 +82,16 @@ Route::resource('photos', PhotoController::class)->only([
 Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
 ]);
+
+// membuat view
+Route::get('/greeting', function () {
+	return view('hello', ['name' => 'Alya Ajeng']);
+});
+
+// view dalam direktori
+Route::get('/greeting', function () {
+	return view('blog.hello', ['name' => 'Alya Ajeng']);
+});
+
+//menampilkan view dari controller
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
