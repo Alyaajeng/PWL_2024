@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SalesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// menambahkan route halaman home
+Route::get('/', [HomeController::class, 'index']);
+
+//menambahkan route halaman products 
+Route::prefix('category')->group(function () {
+    Route::get('/{category}', [ProductController::class, 'category']);
+});
+
+// menambahkan route halaman user 
+Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);
+
+// menambahkan route halaman penjualan
+Route::get('/sales', [SalesController::class, 'index']);
