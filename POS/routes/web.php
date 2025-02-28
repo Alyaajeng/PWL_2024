@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\LevelController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,10 @@ Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);
 
 // menambahkan route halaman penjualan
 Route::get('/sales', [SalesController::class, 'index']);
+
+// DB FACADE
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::get('/level', [LevelController:: class, 'index']);
