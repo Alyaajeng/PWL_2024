@@ -85,14 +85,14 @@ class BarangController extends Controller
             'barang_kode'   => 'required|string|min:3|unique:m_barang,barang_kode',
             'barang_nama'   => 'required|string|max:100',
             'kategori_id'   => 'required|int',
-            'harga'         => 'required|integer',
+            'harga'         => 'required|integer'
         ]);
 
         BarangModel::create([
             'barang_kode'   => $request->barang_kode,
             'barang_nama'   => $request->barang_nama,
             'kategori_id'   => $request->kategori_id,
-            'harga'         => $request->harga,
+            'harga'         => $request->harga
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil disimpan');

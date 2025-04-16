@@ -63,22 +63,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="harga_beli" class="col-1 control-label col-form-label">Harga Beli</label>
+                        <label for="harga" class="col-1 control-label col-form-label">Harga</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="harga_beli" name="harga_beli" value="{{ old('harga_beli', $barang->harga_beli) }}" required>
+                            <input type="text" class="form-control" id="harga" name="harga" value="{{ old('harga', $barang->harga) }}" required>
 
-                            @error('harga_beli')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="harga_jual" class="col-1 control-label col-form-label">Harga Jual</label>
-                        <div class="col-11">
-                            <input type="text" class="form-control" id="harga_jual" name="harga_jual" value="{{ old('harga_jual', $barang->harga_jual) }}" required>
-
-                            @error('harga_jual')
+                            @error('harga')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
