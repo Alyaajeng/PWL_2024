@@ -60,9 +60,9 @@ $(document).ready(function() {
             url: "{{ url('user/list') }}",
             type: "POST",
             dataType: "json",
-            data : function(d) {
+            data: function(d) {
                 d.level_id = $('#level_id').val();
-            }
+            },
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
