@@ -32,7 +32,7 @@ class BarangController extends Controller
 
     public function list(Request $request)
     {
-        $products = BarangModel::select('barang_id', 'barang_kode', 'barang_nama', 'kategori_id', 'harga_beli', 'harga_jual')->with('kategori');
+        $products = BarangModel::select('barang_id', 'barang_kode', 'barang_nama', 'kategori_id', 'harga')->with('kategori');
 
         // Filter data barang berdasarkan kategori_id
         if ($request->kategori_id) {
@@ -85,16 +85,14 @@ class BarangController extends Controller
             'barang_kode'   => 'required|string|min:3|unique:m_barang,barang_kode',
             'barang_nama'   => 'required|string|max:100',
             'kategori_id'   => 'required|int',
-            'harga_beli'    => 'required|integer',
-            'harga_jual'    => 'required|integer'
+            'harga'         => 'required|integer',
         ]);
 
         BarangModel::create([
             'barang_kode'   => $request->barang_kode,
             'barang_nama'   => $request->barang_nama,
             'kategori_id'   => $request->kategori_id,
-            'harga_beli'    => $request->harga_beli,
-            'harga_jual'    => $request->harga_jual
+            'harga'         => $request->harga,
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil disimpan');
@@ -152,16 +150,14 @@ class BarangController extends Controller
             'barang_kode'   => 'required|string|min:3|unique:m_barang,barang_kode,' . $id . ',barang_id',
             'barang_nama'   => 'required|string|max:100',
             'kategori_id'   => 'required|integer',
-            'harga_beli'    => 'required|integer',
-            'harga_jual'    => 'required|integer'
+            'harga'         => 'required|integer'
         ]);
 
         BarangModel::find($id)->update([
             'barang_kode'   => $request->barang_kode,
             'barang_nama'   => $request->barang_nama,
             'kategori_id'   => $request->kategori_id,
-            'harga_beli'    => $request->harga_beli,
-            'harga_jual'    => $request->harga_jual
+            'harga'         => $request->harga
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil diubah');
