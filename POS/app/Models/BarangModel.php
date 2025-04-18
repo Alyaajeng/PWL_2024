@@ -16,7 +16,8 @@ class BarangModel extends Model
         'kategori_id',
         'barang_kode',
         'barang_nama',
-        'harga'
+        'harga_beli',
+        'harga_jual'
     ];
 
     public function kategori(): BelongsTo
