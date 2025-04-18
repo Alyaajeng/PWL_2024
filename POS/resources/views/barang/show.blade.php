@@ -32,8 +32,12 @@
                         <td>{{ $barang->kategori->kategori_nama }}</td>
                     </tr>
                     <tr>
-                        <th>Harga</th>
-                        <td>{{ $barang->harga }}</td>
+                        <th>Harga Beli</th>
+                        <td>{{ $barang->harga_beli }}</td>
+                    </tr>
+                    <tr>
+                        <th>Harga Jual</th>
+                        <td>{{ $barang->harga_jual }}</td>
                     </tr>
                 </table>
             @endempty
