@@ -6,7 +6,7 @@
       </div>
       <div class="info">
         <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
-        <small class="text-muted">{{ Auth::user()->level->nama_level ?? '' }}</small>
+        <small class="text-muted">{{ Auth::user()->level->nama_level ?? 'User' }}</small>
       </div>
     </div>
   
@@ -33,12 +33,14 @@
             </li>
   
             <li class="nav-header">Data Pengguna</li>
+            @if(Auth::user()->hasRole('ADM'))
             <li class="nav-item">
                 <a href="{{ url('/level') }}" class="nav-link {{ ($activeMenu == 'level') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-layer-group"></i>
                     <p>Level User</p>
                 </a>
             </li>
+            @endif
             <li class="nav-item">
                 <a href="{{ url('/user') }}" class="nav-link {{ ($activeMenu == 'user') ? 'active' : '' }}">
                     <i class="nav-icon far fa-user"></i>
@@ -84,7 +86,10 @@
             
             <li class="nav-header">Akun</li>
             <li class="nav-item">
-                <a href="{{ url('/logout') }}" class="nav-link">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>Logout</p>
                 </a>
